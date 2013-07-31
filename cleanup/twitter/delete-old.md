@@ -1,4 +1,4 @@
-# delete-old.js
+# [delete-old.js](delete-old.js)
 
 SOMEWHAT HACKISH SCRIPT TO DELETE SOME OF YOUR ACTIVITY ON TWITTER  
 (OR MOST OF IT IF YOU’RE PATIENT ENOUGH)
@@ -30,10 +30,9 @@ Only use this script if you’re “technical” enough to understand this.
 
 2. Go to your profile page (twitter.com/username) and scroll to the bottom a few times to make it load a few hundred tweets. (If you want to undo favorites, go to twitter.com/favorites.)
 
-3. Use the browser's Web Console or JavaScript Console and paste all of this script in it. (And run the code obviously.)
+3. Use the browser's Web Console or JavaScript Console and paste all of [delete-old.js](delete-old.js) in it. (And run the code obviously.)
 
-4. In the Console, run:  
-   `> TWD.start()`
+4. In the Console, run: `TWD.start()`
 
 ## Tweaking
 
