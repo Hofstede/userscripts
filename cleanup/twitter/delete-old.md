@@ -14,11 +14,11 @@ Also: only tested in Firefox 24 and Chrome 28.
 ### 3200 tweets limit
 
 You will not be able to delete more than the last 3200 tweets.  
-This is a Twitter platform limitation. See Issue #2 for details.
+This is a Twitter platform limitation. See [Issue #2](https://github.com/fvsch/userscripts/issues/2) for details.
 
 ### Phantom retweets
 
-I’ve ended up with a bunch of half-retweeted tweets in my timeline, for a minority of the cancelled retweets. No idea why. See Issue #3 for details.
+I’ve ended up with a bunch of half-retweeted tweets in my timeline, for a minority of the cancelled retweets. No idea why. See [Issue #3](https://github.com/fvsch/userscripts/issues/3) for details.
 
 ## Usage
 
