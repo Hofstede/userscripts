@@ -1,4 +1,4 @@
-# facebook/delete-posts.js
+# facebook/[delete-posts.js](delete-posts.js)
 
 VERY HACKISH SCRIPT TO DELETE MOST OF YOUR ACTIVITY ON FACEBOOK
 
@@ -26,9 +26,9 @@ We have to work with Facebook’s text labels for buttons. If you want this scri
 
 4. Open your browser's Web Console or JavaScript Console or whatever it’s called.
 
-5. Paste this script in the Console and execute/evalute (it doesn't do anything on its own).
+5. Paste the contents of [delete-posts.js](delete-posts.js) in the Console and execute/evalute (it doesn't do anything on its own).
 
-6. Launch with: `> startDeleting()`
+6. Launch with: `startDeleting()`
 
 ## Tweaking
 
