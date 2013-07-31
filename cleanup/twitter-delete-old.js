@@ -28,10 +28,14 @@
 
   Only use this script if you’re “technical” enough to understand this.
 
+  0. Check and if necessary change the values for the first batch
+     of constants, especially DELETE and KEEP_LATEST.
+
   1. In a modern browser, login to your Twitter account.
 
   2. Go to your profile page (twitter.com/username) and scroll to the
      bottom a few times to make it load a few hundred tweets.
+     (If you want to undo favorites, go to twitter.com/favorites.)
 
   3. Use the browser's Web Console or JavaScript Console and paste
      all of this script in it. (And run the code obviously.)
@@ -62,11 +66,12 @@ var TWD = {
   // Constants you may want to modify
   DELETE: true,        // Delete your own tweets
   UNDO_RT: true,       // Un-RT everything
+  UNDO_FAV: true,      // Un-favorite everything
   KEEP_LATEST: 100,    // Keep at least the latest N tweets
   KEEP_RECENT: 2.5,    // Keep at least tweets from the previous N days
-  PROCESS_LIMIT: 500,  // Number of tweets to work on at most
 
-  // Wait times in milliseconds
+  // Script behavior tweaks (wait times are in milliseconds)
+  PROCESS_LIMIT: 500,        // Number of tweets to work on at most. 500 is fine.
   WAIT_BEFORE_NEXT: 200,     // Not sure it's necessary, but a short one works
   WAIT_BEFORE_CONFIRM: 500,  // I’ve seen it work with as low as 200
   WAIT_AFTER_CONFIRM: 2000,  // 2000 works nicely, 1000 not so much
@@ -77,6 +82,7 @@ var TWD = {
   TWEET_TEXT_SELECTOR: '.tweet-text',
   DELETE_BUTTON_SELECTOR: '.action-del-container a.js-action-del',
   UNDO_RT_BUTTON_SELECTOR: '.action-rt-container a.undo-retweet',
+  UNDO_FAV_BUTTON_SELECTOR: '.action-fav-container a.unfavorite',
   DELETE_MODAL_TWEET_SELECTOR: '#delete-tweet-dialog .original-tweet',
   DELETE_MODAL_BUTTON_SELECTOR: '#delete-tweet-dialog .delete-action'
 
@@ -152,7 +158,8 @@ TWD.nextTweet = function nextTweet() {
     'txt': '', // string
     'deleteTries': 0, // Number of times we checked for the confirm dialog
     'deleteBtn': null, // Delete button element
-    'undoRtBtn': null // Undo RT button element
+    'undoRtBtn': null, // Undo RT button element
+    'undoFavBtn': null // Undo Favorite button element
   }
 
   // Getting a date to work with
@@ -179,7 +186,7 @@ TWD.nextTweet = function nextTweet() {
   // Tweet is too recent to process 
   else if ( tweet.age > TWD.maxDate ) {
     // Logging the current tweet
-    var message = '' + (TWD.currentIndex+1) + ' - AGE LIMIT REACHED' +
+    var message = '' + (TWD.currentIndex+1) + ' - AGE LIMIT REACHED\n' +
       'Limit is: ' + TWD.maxDate.toISOString().slice(0,16).replace('T',' ') + '\n' +
       'Last tweet was:'
     TWD.logs.log( message + ' ' + tweet.log );
@@ -217,21 +224,33 @@ TWD.processCurrentTweet = function processCurrentTweet() {
     tweet.undoRtBtn.click();
     setTimeout( TWD.nextTweet, TWD.WAIT_BEFORE_NEXT );
   }
+  function undoFavorite() {
+    var message = '' + (TWD.currentIndex+1) + ' - UNDO FAVORITE';
+    TWD.logs.log( message + ': ' + tweet.log );
+    TWD.processedTweets++;
+    tweet.undoFavBtn.click();
+    setTimeout( TWD.nextTweet, TWD.WAIT_BEFORE_NEXT );
+  }
 
   // Getting the action buttons for this tweet
   tweet.deleteBtn = tweet.div.querySelector( TWD.DELETE_BUTTON_SELECTOR );
   tweet.undoRtBtn = tweet.div.querySelector( TWD.UNDO_RT_BUTTON_SELECTOR );
+  tweet.undoFavBtn = tweet.div.querySelector( TWD.UNDO_FAV_BUTTON_SELECTOR );
 
-  // Determine if it’s an original tweet or a retweet
-  tweet.type = tweet.div.classList.contains( 'my-tweet' ) ? 'original' : tweet.type;
+  // Determine if it’s an original tweet or a retweet or a fav
+  // Order matters: a fav+retweet will be considered as a retweet
+  tweet.type = tweet.div.classList.contains( 'favorited' ) ? 'favorite' : tweet.type;
   tweet.type = tweet.div.classList.contains( 'retweeted' ) ? 'retweet' : tweet.type;
+  tweet.type = tweet.div.classList.contains( 'my-tweet' ) ? 'original' : tweet.type;
 
   // Skip if type is unknown, or disabled in options
   // Otherwise do the delete/undo thing and go to next step
-  if ( tweet.type === 'unknown' ) {
-    skipTweet();
-  }
-  else if ( (!TWD.DELETE && tweet.type === 'original') || (!TWD.UNDO_RT && tweet.type === 'retweet') ) {
+  if (
+  	( tweet.type === 'unknown' ) ||
+  	( tweet.type === 'original' && !TWD.DELETE ) ||
+  	( tweet.type === 'retweet' && !TWD.UNDO_RT ) ||
+  	( tweet.type === 'favorite' && !TWD.UNDO_FAV )
+  ) {
     skipTweet();
   }
   else if ( TWD.DELETE && tweet.type === 'original' ) {
@@ -239,6 +258,9 @@ TWD.processCurrentTweet = function processCurrentTweet() {
   }
   else if ( TWD.UNDO_RT && tweet.type === 'retweet' ) {
     undoRt();
+  }
+  else if ( TWD.UNDO_FAV && tweet.type === 'favorite' ) {
+    undoFavorite();
   }
 }
 
@@ -316,3 +338,4 @@ TWD.start = function start() {
     TWD.nextTweet();
   }
 }
+
