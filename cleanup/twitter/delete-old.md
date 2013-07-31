@@ -1,19 +1,19 @@
 # delete-old.js
 
-SOMEWHAT HACKISH SCRIPT TO DELETE SOME OF YOUR ACTIVITY ON TWITTER
+SOMEWHAT HACKISH SCRIPT TO DELETE SOME OF YOUR ACTIVITY ON TWITTER  
 (OR MOST OF IT IF YOU’RE PATIENT ENOUGH)
 
-Use at your very own risk.
+Use at your very own risk.  
 May delete a lot of your tweets and RT (that's the point).
 
-No warranty, yada yada.
+No warranty, yada yada.  
 Also: only tested in Firefox 24 and Chrome 28.
 
 ## Known limitations and issues
 
 ### 3200 tweets limit
 
-You will not be able to delete more than the last 3200 tweets.
+You will not be able to delete more than the last 3200 tweets.  
 This is a Twitter platform limitation. See Issue #2 for details.
 
 ### Phantom retweets
@@ -32,7 +32,7 @@ Only use this script if you’re “technical” enough to understand this.
 
 3. Use the browser's Web Console or JavaScript Console and paste all of this script in it. (And run the code obviously.)
 
-4. In the Console, run:
+4. In the Console, run:  
    `> TWD.start()`
 
 ## Tweaking
