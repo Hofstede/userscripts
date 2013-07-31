@@ -1,4 +1,4 @@
-# [delete-old.js](delete-old.js)
+# twitter/[delete-old.js](delete-old.js)
 
 SOMEWHAT HACKISH SCRIPT TO DELETE SOME OF YOUR ACTIVITY ON TWITTER  
 (OR MOST OF IT IF YOU’RE PATIENT ENOUGH)
