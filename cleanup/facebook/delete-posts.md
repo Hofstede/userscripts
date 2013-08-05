@@ -30,6 +30,8 @@ We have to work with Facebook’s text labels for buttons. If you want this scri
 
 6. Launch with: `startDeleting()`
 
+7. It’s highly likely that Facebook will only have loaded a fraction of your posts, and you will have to *refresh the page and redo steps 3-6* several times. When refreshing the page, it’s probably best to do a hard refresh, which in most browsers means <kbd>Ctrl+F5</kbd> or <kbd>Cmd+Shift+R</kbd>.
+
 ## Tweaking
 
 -  By default we're running up to 3 passes, with up to 300 items. At 2 seconds an item, that's a maximum execution time of 30 minutes (perhaps a bit more if the page/browser is busy). Of course it's unlikely all passes will work on the maximum number of items.
