@@ -24,7 +24,7 @@ I’ve ended up with a bunch of half-retweeted tweets in my timeline, for a mino
 
 ### Bookmarklet (with default settings)
 
-1. In a modern desktop browser, [go to this page](https://raw.github.com/fvsch/userscripts/master/cleanup/twitter/delete-old.bookmarklet.html) and save the bookmarklet.
+1. In a modern desktop browser, [go to this page](http://fvsch.com/tools/cleanup/twitter/bookmarklet.html) and save the bookmarklet.
 2. Login to your Twitter account.
 3. Go to your profile page at `twitter.com/username`, or your favorites at `twitter.com/favorites`.
 4. Scroll down a few times so that Twitter loads older tweets (the 100 latest ones and/or those from the past 2 days are kept intact). Loading a few hundreds works well. Loading a thousand tweets or more (yeah I tried) will slow down your browser considerably.
