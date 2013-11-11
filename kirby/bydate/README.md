@@ -101,7 +101,7 @@ will return an array of pages that may look like (pseudocode):
 
 where each item in the child arrays is a [Kirby page object](http://getkirby.com/docs/variables/page).
 
-See [Example with results grouped by year](example-years.php) for relevant templating code.
+See [Example with results grouped by year](templates/bydate-years.php) for relevant templating code.
 
 ### Group results by month
 
@@ -125,7 +125,7 @@ will return an array of pages that may look like (pseudocode):
 
 where each item in the deepest arrays is a [Kirby page object](http://getkirby.com/docs/variables/page).
 
-See [Example with results grouped by month](example-months.php) for relevant templating code.
+See [Example with results grouped by month](templates/bydate-months.php) for relevant templating code.
 
 ## Option documentation
 
