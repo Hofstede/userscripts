@@ -2,7 +2,6 @@
 /*
   Example: Using pagesByDate with results grouped by month
 */
-  include_once('bydate.php');
   $posts = pagesByDate($pages, array('group'=>'month'));
 ?>
 

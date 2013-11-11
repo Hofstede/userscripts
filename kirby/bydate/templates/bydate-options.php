@@ -2,7 +2,6 @@
 /*
   Example: Using pagesByDate with some custom options
 */
-  include_once('bydate.php');
 
   // Let's build a list of events planned in 2014
   $myOptions = array(
@@ -11,15 +10,15 @@
     'order' => 'asc',
   );
 
-  // If we wanted all pages with dates in the site, we could do:
+  // If we want all pages with dates in the site, we can do:
   $events = pagesByDate($pages, $myOptions);
 
   // If instead we want to limit ourselves to content in a "content/events" folder…
   // (We can't just use $pages->find('events') because it doesn't return a set of pages)
-  $events = pagesByDate(
-    $pages->find('events')->children(),
-    $myOptions
-  );
+  // $events = pagesByDate(
+  //   $pages->find('events')->children(),
+  //   $myOptions
+  // );
 ?>
 
 <?php if (!$events): ?>

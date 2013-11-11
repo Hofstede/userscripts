@@ -1,5 +1,13 @@
-Kirby CMS – Get pages by dates
-==============================
+Kirby CMS plugin – bydate
+=========================
+
+Kirby plugin that helps working with dated pages, such as blog posts. Provides a `pagesByDate` function for your templates.
+
+## Install
+
+1. Get [bydate.php](plugins/bydate.php) and put it in the `site/plugins` folder of your Kirby-powered site.
+
+2. Optional: [Download or copy example templates](templates/). Some can be included as-is in your templates, but you’ll probably want to copy the relevant examples and customize them in your own templates.
 
 ## pagesByDate function
 
@@ -54,10 +62,10 @@ Here's a basic example:
 
 See complete examples:
 
-- [Simple example](example-basic.php)
-- [Example with custom options](example-options.php)
-- [Example with results grouped by year](example-years.php)
-- [Example with results grouped by month](example-months.php)
+- [Simple example](templates/bydate-basic.php)
+- [Example with custom options](templates/bydate-options.php)
+- [Example with results grouped by year](templates/bydate-years.php)
+- [Example with results grouped by month](templates/bydate-months.php)
 
 ## Highlights
 

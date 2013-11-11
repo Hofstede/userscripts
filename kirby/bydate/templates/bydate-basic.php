@@ -2,7 +2,6 @@
 /*
   Example: Using pagesByDate with default settings
 */
-  include_once('bydate.php');
   $posts = pagesByDate($pages);
 ?>
 
