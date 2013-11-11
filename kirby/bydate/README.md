@@ -1,4 +1,3 @@
-
 Kirby CMS – Get pages by dates
 ==============================
 
@@ -10,7 +9,7 @@ The feature set for this function is:
 
 - *Only* returns pages with a valid `date` or `Date` metadata field.
 - Set limit dates, and by default do not return pages with a future date.
-- … Which allows you to set pages to be [published in the future](#future).
+- … Which allows you to set pages to be [published in the future](#future-publishing).
 - Return all pages with a date in your site, or limit to a specific folder.
 - Option to group by year or year then month, for instance if you want to ouput titles with years or months before the relevant posts.
 - Use `limit` and `offset` options to limit the number of results and perhaps do some semi-manual pagination (sorry, no Kirby pagination object).
@@ -21,7 +20,7 @@ The `pagesByDate` function may take two arguments:
 
 1. Source (required): A kirby Pages object which represents the set of pages to work with. Use `$pages` for all pages in the site. Or use any Kirby Pages object, such as the ones returned by `$page->children()` and `$page->siblings()`.
 
-2. Options (optional): An array of options. [See below for available options](#options).
+2. Options (optional): An array of options. [See below for available options](#option-documentation).
 
 If you want to work on all child and descendant pages of a given folder, you could use:
 
@@ -62,7 +61,7 @@ See complete examples:
 
 ## Highlights
 
-<h3 id="future">Future publishing</h3>
+### Future publishing
 
 If you write a post with a date in the future:
 
@@ -120,7 +119,7 @@ where each item in the deepest arrays is a [Kirby page object](http://getkirby.c
 
 See [Example with results grouped by month](example-months.php) for relevant templating code.
 
-<h2 id="options">Option documentation</h2>
+## Option documentation
 
     order:      Sort order: 'asc' (oldest first) or 'desc' (newest first).
                 Defaults to 'desc'.
